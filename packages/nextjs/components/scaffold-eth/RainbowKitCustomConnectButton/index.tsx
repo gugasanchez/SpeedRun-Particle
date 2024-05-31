@@ -7,6 +7,7 @@ import { AddressQRCodeModal } from "./AddressQRCodeModal";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Address } from "viem";
+import ParticleConnectionHandler from "~~/components/particle/ParticleConnectionHandler";
 import { useNetworkColor } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
@@ -30,11 +31,7 @@ export const RainbowKitCustomConnectButton = () => {
           <>
             {(() => {
               if (!connected) {
-                return (
-                  <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
-                    Connect Wallet
-                  </button>
-                );
+                return <ParticleConnectionHandler openConnectModal={openConnectModal} />;
               }
 
               if (chain.unsupported || chain.id !== targetNetwork.id) {

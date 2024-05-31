@@ -1,3 +1,4 @@
+import { particleGoogleWallet, particleTwitterWallet, particleWallet } from "../particleWallet";
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   coinbaseWallet,
@@ -21,7 +22,7 @@ const wallets = [
   rainbowWallet,
   safeWallet,
   ...(!targetNetworks.some(network => network.id !== (chains.hardhat as chains.Chain).id) || !onlyLocalBurnerWallet
-    ? [rainbowkitBurnerWallet]
+    ? [rainbowkitBurnerWallet()]
     : []),
 ];
 
@@ -30,6 +31,10 @@ const wallets = [
  */
 export const wagmiConnectors = connectorsForWallets(
   [
+    {
+      groupName: "Social Wallets",
+      wallets: [particleGoogleWallet, particleTwitterWallet, particleWallet],
+    },
     {
       groupName: "Supported Wallets",
       wallets,
