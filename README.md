@@ -167,6 +167,10 @@ Next, we will add the Particle Wallet connectors to the `wagmiConnectors.tsx` fi
 Open the file `packages/nextjs/services/web3/wagmiConnectors.tsx` and modify it to include the Particle Wallet connectors:
 
 ```typescript
+import { particleGoogleWallet, particleTwitterWallet, particleWallet } from "../particleWallet/index";
+```
+
+```typescript
     {
       groupName: "Social Wallets",
       wallets: [particleGoogleWallet, particleTwitterWallet, particleWallet],
